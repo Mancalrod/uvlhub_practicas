@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: ['3.12', '3.11'
+        python-version: ['3.12', '3.11']
     services:
       mysql:
         image: mysql:5.7
@@ -44,6 +44,11 @@ jobs:
     - name: Check for outdated dependencies
       run: |
         pip list --outdated
+
+    - name: Securtity audit
+      run: |
+        pip install pip-audit 
+        pip-audit
 
     - name: Upload coverage to Codacy
       run: |
